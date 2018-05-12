@@ -28,13 +28,11 @@ public function homepage()
 }
 
     /**
-     * @Route("page/{slug}")
+     * @Route("/contacts",name="contacts")
      */
-public function show($slug)
+public function show()
 {
-    return $this->render('show.html.twig', [
-        'title' => ucwords(str_replace('-', ' ', $slug)),
-        ]);
+    return $this->render('contacts.html.twig',[]);
 }
     /**
      * @Route("/registration", name="registration")

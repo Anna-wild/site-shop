@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {% endblock %}
+{% block title %}product {% endblock %}
 
 {% block body %}
-{% for item in product %}
+
+     {% for item in product %}
+        <div id="line">
     <p>{{ item.name }}</p>
     <p>{{ item.size }}</p>
     <img src="{{ item.image }}"><br/>
     <p>{{ item.price }}</p>
     <a href="{{ path('details',{'id':item.id}) }}" class="btn btn-success">Деталі</a>
+    </div>
 {% endfor %}
 {% endblock %}
