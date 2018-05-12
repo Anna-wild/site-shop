@@ -9,14 +9,18 @@
 namespace App\Controller;
 
 
+use App\Entity\Order;
+use App\Entity\SingleOrder;
+use App\Form\OrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="homepage")
      */
 public function homepage()
 {
@@ -32,4 +36,32 @@ public function show($slug)
         'title' => ucwords(str_replace('-', ' ', $slug)),
         ]);
 }
+    /**
+     * @Route("/registration", name="registration")
+     */
+    public function registration(Request $request){
+        $entityManager=$this->getDoctrine()->getManager();
+
+    $form=$this->createForm(OrderType::class);
+    $form->handleRequest($request);//відправка даних на сервер
+    if ($form->isSubmitted()&& $form->isValid()){
+      $data=$form->getData();
+      dump($data);
+
+      $order=new SingleOrder();
+      $order->setName($data->getName());
+      $order->setNumber($data->getNumber());
+      $order->setEmail($data->getEmail());
+      $order->setProductName($data->getProductName());
+
+      $entityManager->persist($order);
+      $entityManager->flush();
+
+
+    }
+
+        return $this->render('registration.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }
