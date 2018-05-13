@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}product {% endblock %}
+{% block title %}Види товарів {% endblock %}
 
 {% block body %}
 
-     {% for item in product %}
-        <div id="line">
-    <p>{{ item.name }}</p>
-    <p>{{ item.size }}</p>
-    <img src="{{ item.image }}"><br/>
-    <p>{{ item.price }}</p>
-    <a href="{{ path('details',{'id':item.id}) }}" class="btn btn-success">Деталі</a>
-    </div>
-{% endfor %}
+<table class="table">
+    <tbody>
+
+        {% for item in product %}
+            <tr>
+                <td scope="row">{{ item.name }}</td>
+                <td scope="row" rowspan="3"><img src="{{ item.image }}" id="line" width="30%"></td></tr>
+            <tr><td scope="row">{{ item.size }}'</td></tr>
+            <tr><td scope="row">{{ item.price }} грн.</td></tr>
+
+            <tr><th scope="row"><a href="{{ path('details',{'id':item.id}) }}" class="btn btn-success">Деталі</a></th></tr>
+        {% endfor %}
+
+    </tbody>
+
 {% endblock %}

@@ -3,27 +3,29 @@
     margin-top: 80px;
 }
 #line
-{
-    width:30%;
-    height: 30%;
+{   border-radius: 10px/20px;
+}
+#col-1-1{
+        font-size: large;
+    color: #f6f6f6;
 
-    float:left;
-    margin-left:15px;
-    text-align:center;
 }
 
-.gradient {
-    background: #fefcea; /* Для старых браузров */
-    background: linear-gradient(to top, #fefcea, #f1da36);
-    padding: 10px;
-    border: 1px solid #333;
-}
-td{
-    font-style: italic;
-    font-weight: bold;
+
+
+#gradient {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(240, 240, 240, 0.7));
+    color: #222222;
     font-size: medium;
 }
 .container
 {
     text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Menlo', 'Monaco', monospace;
+}
+body{
+    background-image: url("image/76227994_ChaerulUmam03.jpg");
+    background-size: cover;
 }
